@@ -1,68 +1,487 @@
-<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>حمام التلات — إدارة الموظفين</title><style>*{box-sizing:border-box}body{margin:0;font-family:Tahoma,Arial,sans-serif;background:#f7f7f7;color:#2b1719}button,input,select,textarea{font:inherit}button{cursor:pointer}.app{display:flex;min-height:100vh}.side{width:245px;background:#650f17;color:#fff;padding:20px;position:sticky;top:0;height:100vh;box-shadow:4px 0 18px #4b071022}.brand{font-size:25px;font-weight:900;margin-bottom:5px}.sub{color:#f0cfd2;font-size:12px;margin-bottom:25px}.nav button{display:block;width:100%;border:0;background:transparent;color:#ffe9ea;text-align:right;padding:12px;border-radius:10px;margin:5px 0;transition:.18s}.nav button.active,.nav button:hover{background:#fff;color:#650f17}.main{flex:1;padding:24px;min-width:0}.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}.title{font-size:25px;font-weight:900}.muted{color:#7b6568;font-size:13px}.cards{display:grid;grid-template-columns:repeat(5,minmax(150px,1fr));gap:14px;margin-bottom:18px}.card,.panel{background:#fff;border:1px solid #eadbdd;border-radius:15px;box-shadow:0 4px 14px #650f170d}.card{padding:18px}.card .n{font-size:28px;font-weight:900;margin-top:8px;color:#650f17}.grid2{display:grid;grid-template-columns:1.4fr 1fr;gap:16px}.panel{padding:18px;margin-bottom:16px}.panel h3{margin:0 0 15px;font-size:17px;color:#4d1117}.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}.input,select,textarea{border:1px solid #decfd1;border-radius:9px;padding:9px 11px;background:#fff;outline:none}.input:focus,select:focus,textarea:focus{border-color:#8f1c27;box-shadow:0 0 0 3px #8f1c2712}.btn{border:0;border-radius:9px;padding:9px 14px;background:#f1e7e8;color:#54151a;font-weight:700}.btn.primary{background:#7b101b;color:#fff}.btn.danger{background:#fde7e9;color:#9b1b28}.btn.success{background:#e5f5ea;color:#17643a}.btn.outline{background:#fff;border:1px solid #7b101b;color:#7b101b}.tablewrap{overflow:auto}table{width:100%;border-collapse:collapse;min-width:700px}th,td{padding:11px 9px;border-bottom:1px solid #f0e5e6;text-align:right;white-space:nowrap}th{font-size:12px;color:#735b5e;background:#fcf9f9}td{font-size:13px}.badge{padding:4px 8px;border-radius:20px;font-size:11px;display:inline-block}.present{background:#e5f7ed;color:#176b3a}.late{background:#fff2d8;color:#8a5a00}.absent{background:#ffe8e8;color:#a52323}.leave{background:#f8e5e7;color:#7b101b}.hidden{display:none}.modal{position:fixed;inset:0;background:#0008;display:none;align-items:center;justify-content:center;padding:20px;z-index:10}.modal.show{display:flex}.modalbox{background:#fff;width:min(720px,100%);max-height:90vh;overflow:auto;border-radius:16px;padding:20px}.formgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.field label{display:block;font-size:12px;color:#6e5a5d;margin-bottom:5px}.field.full{grid-column:1/-1}.actions{display:flex;gap:8px;justify-content:flex-start;margin-top:18px}.empty{text-align:center;color:#7a686b;padding:25px}.reportbox{background:#fcf8f8;border:1px solid #eee0e2;border-radius:12px;padding:14px;margin-top:12px}.kpi{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #eee0e2}.sync-status{display:inline-block;margin-right:8px;padding:4px 8px;border-radius:999px;background:#f1e7e8;color:#650f17;font-size:11px;font-weight:700}.sync-status[data-state="ok"]{background:#e7f6ec;color:#17643a}.sync-status[data-state="bad"]{background:#fde7e9;color:#9b1b28}.sync-status[data-state="busy"]{background:#fff4df;color:#7b5a00}.print-only{display:none}.fab{position:fixed;left:26px;bottom:26px;width:62px;height:62px;border-radius:50%;border:0;background:#7b101b;color:#fff;font-size:25px;box-shadow:0 10px 25px #650f1740;z-index:9}.fab span{display:block;font-size:10px;font-weight:700;margin-top:2px}.quickbar{display:flex;gap:8px;flex-wrap:wrap}.summary-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.summary-card{background:#fff;border:1px solid #eadbdd;border-radius:12px;padding:12px}.summary-card b{font-size:22px;color:#7b101b;display:block;margin-top:5px}.periods .btn.active{background:#7b101b;color:#fff}@media(max-width:1000px){.cards{grid-template-columns:repeat(2,1fr)}.grid2{grid-template-columns:1fr}.side{width:190px}.summary-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:700px){.app{display:block}.side{position:relative;width:100%;height:auto}.nav{display:grid;grid-template-columns:repeat(2,1fr);gap:5px}.main{padding:12px}.formgrid{grid-template-columns:1fr}.cards{grid-template-columns:1fr 1fr}.top{align-items:flex-start;gap:10px}.fab{left:16px;bottom:16px}.summary-grid{grid-template-columns:1fr 1fr}}@media print{.side,.top,.toolbar,.no-print,.fab{display:none!important}.main{padding:0}.panel{box-shadow:none;border:0}.print-only{display:block}body{background:#fff}}</style><script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script><script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore-compat.js"></script></head><body><div class="app"><aside class="side"><div class="brand">حمام التلات</div><div class="sub">نظام متابعة الموظفين</div><div class="nav"><button class="active" data-page="dashboard">📊 لوحة التحكم</button><button data-page="employees">👥 الموظفون</button><button data-page="attendance">🕐 الحضور والانصراف</button><button data-page="adjustments">💰 الخصومات والإضافات</button><button data-page="leaves">🏖️ الإجازات والأذونات</button><button data-page="reports">📑 التقارير</button><button data-page="settings">⚙️ الإعدادات والنسخ</button></div></aside><main class="main"><div class="top"><div><div class="title" id="pageTitle">لوحة التحكم</div><div class="muted">متابعة سريعة لموظفي حمام التلات <span id="syncStatus" class="sync-status">جارٍ الاتصال…</span></div></div><button class="btn primary" onclick="quickAttendance()">🕐 تسجيل حضور / انصراف</button></div><section id="dashboard" class="page"></section><section id="employees" class="page hidden"></section><section id="attendance" class="page hidden"></section><section id="adjustments" class="page hidden"></section><section id="leaves" class="page hidden"></section><section id="reports" class="page hidden"></section><section id="settings" class="page hidden"></section></main></div><button class="fab" onclick="quickAttendance()" title="تسجيل حضور أو انصراف">🕐<span>حضور</span></button><div id="modal" class="modal"><div class="modalbox" id="modalBox"></div></div><script>
-const KEY='motabe3_v1';
-const firebaseConfig={apiKey:'AIzaSyCJW0TUPiNaqoQYXpYLrBGb7BrBgARWLN0',authDomain:'hamam-b6b82.firebaseapp.com',projectId:'hamam-b6b82',storageBucket:'hamam-b6b82.firebasestorage.app',messagingSenderId:'256963018998',appId:'1:256963018998:web:ee4d4db6f6f92024496cd7',measurementId:'G-SZS2SJWT1W'};
-let firebaseDb=null, cloudReady=false, syncing=false;
-const defaultDB=()=>({settings:{start:'09:00',end:'17:00',grace:10},branches:['حمام التلات'],departments:['المبيعات','المخزن','الإدارة','الحسابات'],employees:[],attendance:[],adjustments:[],leaves:[]});
-let db=JSON.parse(localStorage.getItem(KEY)||'null')||defaultDB();
-// توحيد النسخ القديمة على فرع حمام التلات عند البداية
-if(!db.branches||!db.branches.length) db.branches=['حمام التلات'];
-db.branches=['حمام التلات']; db.employees=(db.employees||[]).map(e=>({...e,branch:'حمام التلات'}));
-function setSyncStatus(text,state='idle'){let el=document.getElementById('syncStatus');if(el){el.textContent=text;el.dataset.state=state}}
-function save(){localStorage.setItem(KEY,JSON.stringify(db));render();if(firebaseDb) cloudSave()}
-async function cloudSave(){if(!firebaseDb)return;syncing=true;setSyncStatus('جارٍ الحفظ…','busy');try{
-const batchSize=350;
-const meta={settings:db.settings,branches:db.branches,departments:db.departments,updatedAt:new Date().toISOString()};
-await firebaseDb.collection('employee_system').doc('meta').set(meta);
-for(const [key,items] of [['employees',db.employees],['attendance',db.attendance],['adjustments',db.adjustments],['leaves',db.leaves]]){
-  const col=firebaseDb.collection('employee_system');
-  const old=await col.where('type','==',key).get();
-  const chunks=Math.ceil(items.length/batchSize)||1;
-  let batch=firebase.firestore().batch(),writes=0;
-  old.forEach(d=>{batch.delete(d.ref);writes++});
-  if(writes>=450){await batch.commit();batch=firebase.firestore().batch();writes=0}
-  for(let i=0;i<chunks;i++){
-    const ref=col.doc(key+'_'+i);
-    batch.set(ref,{type:key,index:i,items:items.slice(i*batchSize,(i+1)*batchSize)});writes++;
-    if(writes>=450){await batch.commit();batch=firebase.firestore().batch();writes=0}
-  }
-  if(writes)await batch.commit();
-}
-setSyncStatus('متصل ✓','ok');
-}catch(e){console.error(e);setSyncStatus('خطأ في الحفظ','bad')}}
-async function cloudLoad(){try{
-if(!firebase.apps.length)firebase.initializeApp(firebaseConfig);firebaseDb=firebase.firestore();setSyncStatus('جارٍ الاتصال…','busy');
-const metaSnap=await firebaseDb.collection('employee_system').doc('meta').get();
-if(metaSnap.exists){const meta=metaSnap.data();const next={...defaultDB(),...meta};delete next.updatedAt;
-for(const key of ['employees','attendance','adjustments','leaves']){const snaps=await firebaseDb.collection('employee_system').where('type','==',key).get();next[key]=snaps.docs.sort((a,b)=>(a.data().index||0)-(b.data().index||0)).flatMap(d=>d.data().items||[])}
-db=next;db.branches=['حمام التلات'];db.employees=(db.employees||[]).map(e=>({...e,branch:'حمام التلات'}));localStorage.setItem(KEY,JSON.stringify(db));render();
-}else{await cloudSave()}
-cloudReady=true;setSyncStatus('متصل ✓','ok');
-}catch(e){console.error(e);setSyncStatus('محلي فقط','bad')}}
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>حمام التلات — إدارة الموظفين</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Tahoma,Arial,sans-serif;background:#f7f7f7;color:#2b1719}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+.app{display:flex;min-height:100vh}
+.side{width:245px;background:#650f17;color:#fff;padding:20px;position:sticky;top:0;height:100vh;box-shadow:4px 0 18px #4b071022}
+.brand{font-size:25px;font-weight:900;margin-bottom:5px}
+.sub{color:#f0cfd2;font-size:12px;margin-bottom:25px}
+.nav button{display:block;width:100%;border:0;background:transparent;color:#ffe9ea;text-align:right;padding:12px;border-radius:10px;margin:5px 0;transition:.18s}
+.nav button.active,.nav button:hover{background:#fff;color:#650f17}
+.main{flex:1;padding:24px;min-width:0}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+.title{font-size:25px;font-weight:900}
+.muted{color:#7b6568;font-size:13px}
+.cards{display:grid;grid-template-columns:repeat(5,minmax(150px,1fr));gap:14px;margin-bottom:18px}
+.card,.panel{background:#fff;border:1px solid #eadbdd;border-radius:15px;box-shadow:0 4px 14px #650f170d}
+.card{padding:18px}
+.card .n{font-size:28px;font-weight:900;margin-top:8px;color:#650f17}
+.grid2{display:grid;grid-template-columns:1.4fr 1fr;gap:16px}
+.panel{padding:18px;margin-bottom:16px}
+.panel h3{margin:0 0 15px;font-size:17px;color:#4d1117}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.input,select,textarea{border:1px solid #decfd1;border-radius:9px;padding:9px 11px;background:#fff;outline:none}
+.input:focus,select:focus,textarea:focus{border-color:#8f1c27;box-shadow:0 0 0 3px #8f1c2712}
+.btn{border:0;border-radius:9px;padding:9px 14px;background:#f1e7e8;color:#54151a;font-weight:700}
+.btn.primary{background:#7b101b;color:#fff}
+.btn.danger{background:#fde7e9;color:#9b1b28}
+.btn.success{background:#e5f5ea;color:#17643a}
+.btn.outline{background:#fff;border:1px solid #7b101b;color:#7b101b}
+.tablewrap{overflow:auto}
+table{width:100%;border-collapse:collapse;min-width:700px}
+th,td{padding:11px 9px;border-bottom:1px solid #f0e5e6;text-align:right;white-space:nowrap}
+th{font-size:12px;color:#735b5e;background:#fcf9f9}
+td{font-size:13px}
+.badge{padding:4px 8px;border-radius:20px;font-size:11px;display:inline-block}
+.present{background:#e5f7ed;color:#176b3a}
+.late{background:#fff2d8;color:#8a5a00}
+.absent{background:#ffe8e8;color:#a52323}
+.leave{background:#f8e5e7;color:#7b101b}
+.hidden{display:none}
+.modal{position:fixed;inset:0;background:#0008;display:none;align-items:center;justify-content:center;padding:20px;z-index:10}
+.modal.show{display:flex}
+.modalbox{background:#fff;width:min(720px,100%);max-height:90vh;overflow:auto;border-radius:16px;padding:20px}
+.formgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.field label{display:block;font-size:12px;color:#6e5a5d;margin-bottom:5px}
+.field.full{grid-column:1/-1}
+.actions{display:flex;gap:8px;justify-content:flex-start;margin-top:18px}
+.empty{text-align:center;color:#7a686b;padding:25px}
+.reportbox{background:#fcf8f8;border:1px solid #eee0e2;border-radius:12px;padding:14px;margin-top:12px}
+.kpi{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #eee0e2}
+.print-only{display:none}
+.fab{position:fixed;left:26px;bottom:26px;width:62px;height:62px;border-radius:50%;border:0;background:#7b101b;color:#fff;font-size:25px;box-shadow:0 10px 25px #650f1740;z-index:9}
+.fab span{display:block;font-size:10px;font-weight:700;margin-top:2px}
+.quickbar{display:flex;gap:8px;flex-wrap:wrap}
+.summary-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.summary-card{background:#fff;border:1px solid #eadbdd;border-radius:12px;padding:12px}
+.summary-card b{font-size:22px;color:#7b101b;display:block;margin-top:5px}
+.periods .btn.active{background:#7b101b;color:#fff}
+@media(max-width:1000px){.cards{grid-template-columns:repeat(2,1fr)}.grid2{grid-template-columns:1fr}.side{width:190px}.summary-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:700px){.app{display:block}.side{position:relative;width:100%;height:auto}.nav{display:grid;grid-template-columns:repeat(2,1fr);gap:5px}.main{padding:12px}.formgrid{grid-template-columns:1fr}.cards{grid-template-columns:1fr 1fr}.top{align-items:flex-start;gap:10px}.fab{left:16px;bottom:16px}.summary-grid{grid-template-columns:1fr 1fr}}
+@media print{.side,.top,.toolbar,.no-print,.fab{display:none!important}.main{padding:0}.panel{box-shadow:none;border:0}.print-only{display:block}body{background:#fff}}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="side">
+    <div class="brand">حمام التلات</div>
+    <div class="sub">نظام متابعة الموظفين</div>
+    <div class="nav">
+      <button class="active" data-page="dashboard">📊 لوحة التحكم</button>
+      <button data-page="employees">👥 الموظفون</button>
+      <button data-page="attendance">🕐 الحضور والانصراف</button>
+      <button data-page="adjustments">💰 الخصومات والإضافات</button>
+      <button data-page="leaves">🏖️ الإجازات والأذونات</button>
+      <button data-page="reports">📑 التقارير</button>
+      <button data-page="settings">⚙️ الإعدادات والنسخ</button>
+    </div>
+  </aside>
+  <main class="main">
+    <div class="top">
+      <div>
+        <div class="title" id="pageTitle">لوحة التحكم</div>
+        <div class="muted">متابعة سريعة لموظفي حمام التلات</div>
+      </div>
+      <button class="btn primary" onclick="quickAttendance()">🕐 تسجيل حضور / انصراف</button>
+    </div>
+    <section id="dashboard" class="page"></section>
+    <section id="employees" class="page hidden"></section>
+    <section id="attendance" class="page hidden"></section>
+    <section id="adjustments" class="page hidden"></section>
+    <section id="leaves" class="page hidden"></section>
+    <section id="reports" class="page hidden"></section>
+    <section id="settings" class="page hidden"></section>
+  </main>
+</div>
+<button class="fab" onclick="quickAttendance()" title="تسجيل حضور أو انصراف">🕐<span>حضور</span></button>
+<div id="modal" class="modal"><div class="modalbox" id="modalBox"></div></div>
 
-function nav(page){document.querySelectorAll('.page').forEach(x=>x.classList.add('hidden'));document.getElementById(page).classList.remove('hidden');document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===page));document.getElementById('pageTitle').textContent={dashboard:'لوحة التحكم',employees:'الموظفون',attendance:'الحضور والانصراف',adjustments:'الخصومات والإضافات',leaves:'الإجازات والأذونات',reports:'التقارير',settings:'الإعدادات والنسخ'}[page]||''};document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>nav(b.dataset.page));
-function render(){renderDash();renderEmployees();renderAttendance();renderAdjustments();renderLeaves();renderReports();renderSettings()}
-function renderDash(){let d=today(), total=db.employees.filter(e=>e.status!=='غير نشط').length,a=db.attendance.filter(x=>x.date===d),present=a.filter(x=>x.status==='حاضر').length,late=a.filter(x=>x.status==='متأخر').length,abs=Math.max(0,total-a.length),ded=db.adjustments.filter(x=>x.type==='خصم'&&x.date.startsWith(d.slice(0,7))).reduce((s,x)=>s+Number(x.amount),0);document.getElementById('dashboard').innerHTML=`<div class="cards"><div class="card">👥 إجمالي الموظفين<div class="n">${total}</div></div><div class="card">🟢 حاضر اليوم<div class="n">${present}</div></div><div class="card">🟡 متأخر اليوم<div class="n">${late}</div></div><div class="card">🔴 غياب اليوم<div class="n">${abs}</div></div><div class="card">💸 خصومات الشهر<div class="n">${money(ded)}</div></div></div><div class="grid2"><div class="panel"><h3>حالة الفروع اليوم</h3>${db.branches.map(b=>{let es=db.employees.filter(e=>e.branch===b&&e.status!=='غير نشط'),ids=es.map(e=>e.id),aa=a.filter(x=>ids.includes(x.employeeId));return `<div class="kpi"><span>${esc(b)}</span><strong>${aa.filter(x=>x.status!=='غائب').length} / ${es.length}</strong></div>`}).join('')}</div><div class="panel"><h3>آخر التنبيهات</h3>${a.filter(x=>x.status==='متأخر'||x.status==='غائب').slice(-8).reverse().map(x=>`<div class="kpi"><span>${esc(emp(x.employeeId)?.name||'—')}</span><span class="badge ${x.status==='متأخر'?'late':'absent'}">${x.status}</span></div>`).join('')||'<div class="empty">لا توجد تنبيهات اليوم</div>'}</div></div>`}
-function renderEmployees(){let q=document.getElementById('empSearch')?.value||'',br=document.getElementById('empBranch')?.value||'',list=db.employees.filter(e=>(!q||[e.name,e.code,e.phone].join(' ').includes(q))&&(!br||e.branch===br));document.getElementById('employees').innerHTML=`<div class="panel"><div class="toolbar"><input id="empSearch" class="input" placeholder="بحث بالاسم أو الكود أو الهاتف" value="${esc(q)}" oninput="renderEmployees()"><select id="empBranch" onchange="renderEmployees()"><option value="">كل الفروع</option>${db.branches.map(x=>`<option ${br===x?'selected':''}>${esc(x)}</option>`).join('')}</select><button class="btn primary" onclick="employeeModal()">+ إضافة موظف</button></div><div class="tablewrap"><table><thead><tr><th>الكود</th><th>الموظف</th><th>الفرع</th><th>القسم</th><th>الوظيفة</th><th>الحالة</th><th>إجراء</th></tr></thead><tbody>${list.map(e=>`<tr><td>${esc(e.code)}</td><td><b>${esc(e.name)}</b><br><span class="muted">${esc(e.phone)}</span></td><td>${esc(e.branch)}</td><td>${esc(e.department)}</td><td>${esc(e.job)}</td><td>${esc(e.status)}</td><td><button class="btn" onclick="employeeModal('${e.id}')">تعديل</button> <button class="btn danger" onclick="delEmp('${e.id}')">حذف</button></td></tr>`).join('')||'<tr><td colspan="7" class="empty">لا يوجد موظفون</td></tr>'}</tbody></table></div></div>`}
-function employeeModal(id){let e=id?emp(id):{code:'',name:'',phone:'',branch:db.branches[0],department:db.departments[0],job:'',status:'نشط'};showModal(`<h3>${id?'تعديل موظف':'إضافة موظف'}</h3><div class="formgrid"><div class="field"><label>كود الموظف</label><input id="f_code" class="input" value="${esc(e.code)}"></div><div class="field"><label>الاسم</label><input id="f_name" class="input" value="${esc(e.name)}"></div><div class="field"><label>الهاتف</label><input id="f_phone" class="input" value="${esc(e.phone)}"></div><div class="field"><label>الفرع</label><select id="f_branch">${db.branches.map(x=>`<option ${e.branch===x?'selected':''}>${esc(x)}</option>`).join('')}</select></div><div class="field"><label>القسم</label><select id="f_department">${db.departments.map(x=>`<option ${e.department===x?'selected':''}>${esc(x)}</option>`).join('')}</select></div><div class="field"><label>الوظيفة</label><input id="f_job" class="input" value="${esc(e.job)}"></div><div class="field"><label>الحالة</label><select id="f_status"><option ${e.status==='نشط'?'selected':''}>نشط</option><option ${e.status==='غير نشط'?'selected':''}>غير نشط</option></select></div></div><div class="actions"><button class="btn primary" onclick="saveEmp('${id||''}')">حفظ</button><button class="btn" onclick="closeModal()">إلغاء</button></div>`)}
-function saveEmp(id){let data={id:id||uid('e'),code:f_code.value.trim(),name:f_name.value.trim(),phone:f_phone.value.trim(),branch:f_branch.value,department:f_department.value,job:f_job.value.trim(),status:f_status.value};if(!data.name)return alert('اكتب اسم الموظف');if(id)db.employees[db.employees.findIndex(e=>e.id===id)]=data;else db.employees.push(data);closeModal();save()};function delEmp(id){if(confirm('حذف الموظف؟')){db.employees=db.employees.filter(e=>e.id!==id);save()}}
-function renderAttendance(){let d=document.getElementById('attDate')?.value||today(),br=document.getElementById('attBranch')?.value||'',q=document.getElementById('attSearch')?.value||'',rows=db.employees.filter(e=>(!br||e.branch===br)&&(!q||e.name.includes(q)||e.code.includes(q)));document.getElementById('attendance').innerHTML=`<div class="panel"><div class="toolbar"><input id="attDate" type="date" class="input" value="${d}" onchange="renderAttendance()"><select id="attBranch" onchange="renderAttendance()"><option value="">كل الفروع</option>${db.branches.map(x=>`<option ${br===x?'selected':''}>${esc(x)}</option>`).join('')}</select><input id="attSearch" class="input" placeholder="بحث موظف" value="${esc(q)}" oninput="renderAttendance()"><button class="btn success" onclick="markAll('${d}')">تسجيل الكل حاضر</button><button class="btn" onclick="attendanceCSV('${d}')">تصدير CSV</button></div><div class="tablewrap"><table><thead><tr><th>الكود</th><th>الموظف</th><th>الفرع</th><th>الحضور</th><th>الانصراف</th><th>الحالة</th><th>ملاحظات</th></tr></thead><tbody>${rows.map(e=>{let x=db.attendance.find(a=>a.employeeId===e.id&&a.date===d)||{};return `<tr><td>${esc(e.code)}</td><td>${esc(e.name)}</td><td>${esc(e.branch)}</td><td><input type="time" class="input" value="${x.in||''}" onchange="attSave('${e.id}','${d}','in',this.value)"></td><td><input type="time" class="input" value="${x.out||''}" onchange="attSave('${e.id}','${d}','out',this.value)"></td><td><select onchange="attSave('${e.id}','${d}','status',this.value)"><option ${x.status==='حاضر'?'selected':''}>حاضر</option><option ${x.status==='متأخر'?'selected':''}>متأخر</option><option ${x.status==='غائب'?'selected':''}>غائب</option><option ${x.status==='إجازة'?'selected':''}>إجازة</option></select></td><td><input class="input" value="${esc(x.note||'')}" onchange="attSave('${e.id}','${d}','note',this.value)"></td></tr>`}).join('')||'<tr><td colspan="7" class="empty">لا يوجد موظفون</td></tr>'}</tbody></table></div></div>`}
-function attSave(id,date,k,v){let x=db.attendance.find(a=>a.employeeId===id&&a.date===date);if(!x){x={employeeId:id,date,status:'حاضر',in:'',out:'',note:''};db.attendance.push(x)}x[k]=v;if(k==='in'&&v){x.status=v>db.settings.start&&minutes(v)>minutes(db.settings.start)+Number(db.settings.grace)?'متأخر':'حاضر'};save()};function minutes(s){let [h,m]=s.split(':').map(Number);return h*60+m};function markAll(d){db.employees.forEach(e=>{let x=db.attendance.find(a=>a.employeeId===e.id&&a.date===d);if(!x){db.attendance.push({employeeId:e.id,date:d,status:'حاضر',in:db.settings.start,out:'',note:''})}});save()};function quickAttendance(){nav('attendance')}
-function renderAdjustments(){document.getElementById('adjustments').innerHTML=`<div class="panel"><div class="toolbar"><button class="btn primary" onclick="adjustModal()">+ إضافة خصم / إضافة</button></div><div class="tablewrap"><table><thead><tr><th>التاريخ</th><th>الموظف</th><th>النوع</th><th>المبلغ</th><th>السبب</th><th>إجراء</th></tr></thead><tbody>${db.adjustments.slice().reverse().map(x=>`<tr><td>${x.date}</td><td>${esc(emp(x.employeeId)?.name||'—')}</td><td><span class="badge ${x.type==='خصم'?'absent':'present'}">${x.type}</span></td><td>${money(x.amount)}</td><td>${esc(x.reason)}</td><td><button class="btn danger" onclick="delAdjustment('${x.id}')">حذف</button></td></tr>`).join('')||'<tr><td colspan="6" class="empty">لا توجد بيانات</td></tr>'}</tbody></table></div></div>`};function adjustModal(){showModal(`<h3>إضافة حركة مالية</h3><div class="formgrid"><div class="field"><label>الموظف</label><select id="a_emp">${db.employees.map(e=>`<option value="${e.id}">${esc(e.name)}</option>`).join('')}</select></div><div class="field"><label>النوع</label><select id="a_type"><option>خصم</option><option>إضافة</option></select></div><div class="field"><label>المبلغ</label><input id="a_amount" type="number" class="input"></div><div class="field"><label>التاريخ</label><input id="a_date" type="date" class="input" value="${today()}"></div><div class="field full"><label>السبب</label><textarea id="a_reason" class="input"></textarea></div></div><div class="actions"><button class="btn primary" onclick="saveAdjustment()">حفظ</button><button class="btn" onclick="closeModal()">إلغاء</button></div>`)}function saveAdjustment(){db.adjustments.push({id:uid('a'),employeeId:a_emp.value,type:a_type.value,amount:Number(a_amount.value||0),date:a_date.value,reason:a_reason.value});closeModal();save()};function delAdjustment(id){db.adjustments=db.adjustments.filter(x=>x.id!==id);save()}
-function renderLeaves(){document.getElementById('leaves').innerHTML=`<div class="panel"><div class="toolbar"><button class="btn primary" onclick="leaveModal()">+ تسجيل إجازة / إذن</button></div><div class="tablewrap"><table><thead><tr><th>الموظف</th><th>النوع</th><th>من</th><th>إلى</th><th>الحالة</th><th>السبب</th><th>إجراء</th></tr></thead><tbody>${db.leaves.slice().reverse().map(x=>`<tr><td>${esc(emp(x.employeeId)?.name||'—')}</td><td>${esc(x.type)}</td><td>${x.from}</td><td>${x.to}</td><td>${esc(x.status)}</td><td>${esc(x.reason)}</td><td><button class="btn danger" onclick="delLeave('${x.id}')">حذف</button></td></tr>`).join('')||'<tr><td colspan="7" class="empty">لا توجد بيانات</td></tr>'}</tbody></table></div></div>`};function leaveModal(){showModal(`<h3>إضافة إجازة / إذن</h3><div class="formgrid"><div class="field"><label>الموظف</label><select id="l_emp">${db.employees.map(e=>`<option value="${e.id}">${esc(e.name)}</option>`).join('')}</select></div><div class="field"><label>النوع</label><select id="l_type"><option>إجازة سنوية</option><option>إجازة مرضية</option><option>إذن</option><option>غياب بعذر</option></select></div><div class="field"><label>من</label><input id="l_from" type="date" class="input" value="${today()}"></div><div class="field"><label>إلى</label><input id="l_to" type="date" class="input" value="${today()}"></div><div class="field"><label>الحالة</label><select id="l_status"><option>مقبول</option><option>معلق</option><option>مرفوض</option></select></div><div class="field full"><label>السبب</label><textarea id="l_reason" class="input"></textarea></div></div><div class="actions"><button class="btn primary" onclick="saveLeave()">حفظ</button><button class="btn" onclick="closeModal()">إلغاء</button></div>`)}function saveLeave(){db.leaves.push({id:uid('l'),employeeId:l_emp.value,type:l_type.value,from:l_from.value,to:l_to.value,status:l_status.value,reason:l_reason.value});closeModal();save()};function delLeave(id){db.leaves=db.leaves.filter(x=>x.id!==id);save()}
-function renderReports(){document.getElementById('reports').innerHTML=`<div class="panel"><h3>مركز التقارير</h3><div class="toolbar periods"><button class="btn active" onclick="setPeriod('today',this)">اليوم</button><button class="btn" onclick="setPeriod('week',this)">هذا الأسبوع</button><button class="btn" onclick="setPeriod('month',this)">هذا الشهر</button><button class="btn" onclick="setPeriod('custom',this)">فترة مخصصة</button></div><div class="toolbar"><select id="r_type" onchange="reportBuild()"><option value="summary">ملخص كل الموظفين</option><option value="employee">تقرير موظف</option><option value="attendance">الحضور والانصراف</option><option value="late">التأخير</option><option value="money">الخصومات والإضافات</option></select><select id="r_emp" onchange="reportBuild()"><option value="">كل الموظفين</option>${db.employees.map(e=>`<option value="${e.id}">${esc(e.name)}</option>`).join('')}</select><input id="r_from" type="date" class="input" value="${today()}" onchange="reportBuild()"><input id="r_to" type="date" class="input" value="${today()}" onchange="reportBuild()"><button class="btn primary" onclick="printReport()">🖨️ طباعة / PDF</button><button class="btn" onclick="reportCSV()">⬇️ Excel / CSV</button><button class="btn success" onclick="shareReportWhatsApp()">💬 إرسال واتساب</button></div><div id="reportOut"></div></div>`;setPeriod('month',document.querySelector('.periods .btn:nth-child(3)'))}
-function periodDates(kind){let d=new Date(),f=new Date(d),t=new Date(d);if(kind==='week'){let day=d.getDay()||7;f.setDate(d.getDate()-day+1)}else if(kind==='month'){f=new Date(d.getFullYear(),d.getMonth(),1)}return {f:f.toISOString().slice(0,10),t:t.toISOString().slice(0,10)}}
-function setPeriod(kind,btn){document.querySelectorAll('.periods .btn').forEach(x=>x.classList.remove('active'));if(btn)btn.classList.add('active');let p=periodDates(kind);r_from.value=p.f;r_to.value=p.t;let custom=kind==='custom';r_from.disabled=!custom;r_to.disabled=!custom;reportBuild()}
-function range(){return {f:r_from.value,t:r_to.value}};function inRange(d,f,t){return d>=f&&d<=t};
-function statsFor(ids,f,t){let aa=db.attendance.filter(x=>ids.includes(x.employeeId)&&inRange(x.date,f,t)),mm=db.adjustments.filter(x=>ids.includes(x.employeeId)&&inRange(x.date,f,t));return {present:aa.filter(x=>x.status==='حاضر'||x.status==='متأخر').length,late:aa.filter(x=>x.status==='متأخر').length,absent:aa.filter(x=>x.status==='غائب').length,ded:Math.round(mm.filter(x=>x.type==='خصم').reduce((s,x)=>s+Number(x.amount||0),0)),add:Math.round(mm.filter(x=>x.type==='إضافة').reduce((s,x)=>s+Number(x.amount||0),0))}}
-function reportBuild(){let type=r_type.value,{f,t}=range(),out='';if(!f||!t||f>t){document.getElementById('reportOut').innerHTML='<div class="empty">اختر فترة صحيحة</div>';return}if(type==='summary'){let ids=db.employees.map(e=>e.id),st=statsFor(ids,f,t);out=`<div class="summary-grid"><div class="summary-card">أيام الحضور<b>${st.present}</b></div><div class="summary-card">أيام التأخير<b>${st.late}</b></div><div class="summary-card">أيام الغياب<b>${st.absent}</b></div><div class="summary-card">إجمالي الخصومات<b>${money(st.ded)}</b></div></div><div class="reportbox"><h3>ملخص الموظفين من ${f} إلى ${t}</h3>${reportTable(['الموظف','الحضور','التأخير','الغياب','الخصومات','الإضافات'],db.employees.map(e=>{let x=statsFor([e.id],f,t);return [e.name,x.present,x.late,x.absent,money(x.ded),money(x.add)]}))}</div>`}else if(type==='employee'){let e=emp(r_emp.value);if(!e){out='<div class="empty">اختر موظفًا لعرض التقرير</div>'}else{let st=statsFor([e.id],f,t),aa=db.attendance.filter(x=>x.employeeId===e.id&&inRange(x.date,f,t)),ll=db.leaves.filter(x=>x.employeeId===e.id&&x.from<=t&&x.to>=f);out=`<div class="reportbox"><h3>${esc(e.name)} — ${esc(e.branch)}</h3><div class="summary-grid"><div class="summary-card">الحضور<b>${st.present}</b></div><div class="summary-card">التأخير<b>${st.late}</b></div><div class="summary-card">الغياب<b>${st.absent}</b></div><div class="summary-card">الخصومات<b>${money(st.ded)}</b></div></div>${reportTable(['التاريخ','الحضور','الانصراف','الحالة','ملاحظات'],aa.map(x=>[x.date,x.in,x.out,x.status,x.note||'']))}${ll.length?reportTable(['نوع الإجازة','من','إلى','الحالة'],ll.map(x=>[x.type,x.from,x.to,x.status])):''}</div>`}}else if(type==='attendance'||type==='late'){let aa=db.attendance.filter(x=>inRange(x.date,f,t)&&(type==='attendance'||x.status==='متأخر'));if(r_emp.value)aa=aa.filter(x=>x.employeeId===r_emp.value);out=reportTable(['التاريخ','الموظف','الحضور','الانصراف','الحالة','ملاحظات'],aa.map(x=>[x.date,emp(x.employeeId)?.name||'',x.in,x.out,x.status,x.note||'']))}else{let mm=db.adjustments.filter(x=>inRange(x.date,f,t));if(r_emp.value)mm=mm.filter(x=>x.employeeId===r_emp.value);out=reportTable(['التاريخ','الموظف','النوع','المبلغ','السبب'],mm.map(x=>[x.date,emp(x.employeeId)?.name||'',x.type,money(x.amount),x.reason]))}document.getElementById('reportOut').innerHTML=out}
-function reportTable(headers,rows){return `<div class="tablewrap"><table><thead><tr>${headers.map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>${rows.map(r=>`<tr>${r.map(c=>`<td>${esc(c)}</td>`).join('')}</tr>`).join('')||`<tr><td colspan="${headers.length}" class="empty">لا توجد نتائج</td></tr>`}</tbody></table></div>`}
-function shareReportWhatsApp(){let {f,t}=range(),ids=r_emp.value?[r_emp.value]:db.employees.map(e=>e.id),st=statsFor(ids,f,t),name=r_emp.value?(emp(r_emp.value)?.name||'الموظف'):'كل الموظفين';let msg=`تقرير حمام التلات للموظفين\nالفترة: ${f} إلى ${t}\nالموظف: ${name}\n\nالحضور: ${st.present}\nالتأخير: ${st.late}\nالغياب: ${st.absent}\nالخصومات: ${money(st.ded)}\nالإضافات: ${money(st.add)}\n\nتم استخراج التقرير من نظام حمام التلات.`;window.open('https://wa.me/?text='+encodeURIComponent(msg),'_blank')}
-function printReport(){window.print()};function reportCSV(){let table=document.querySelector('#reportOut table');if(!table)return;let rows=[...table.rows].map(r=>[...r.cells].map(c=>`"${c.innerText.replace(/"/g,'""')}"`).join(','));download('report.csv','\ufeff'+rows.join('\n'),'text/csv;charset=utf-8')}
-function attendanceCSV(d){let rows=[['الكود','الموظف','الفرع','التاريخ','الحضور','الانصراف','الحالة','ملاحظات']];db.attendance.filter(x=>x.date===d).forEach(x=>{let e=emp(x.employeeId);rows.push([e?.code,e?.name,e?.branch,d,x.in,x.out,x.status,x.note])});download('attendance.csv','\ufeff'+rows.map(r=>r.map(c=>`"${String(c||'').replace(/"/g,'""')}"`).join(',')).join('\n'),'text/csv;charset=utf-8')}
-function renderSettings(){document.getElementById('settings').innerHTML=`<div class="grid2"><div class="panel"><h3>إعدادات الدوام</h3><div class="formgrid"><div class="field"><label>بداية العمل</label><input id="s_start" type="time" class="input" value="${db.settings.start}"></div><div class="field"><label>نهاية العمل</label><input id="s_end" type="time" class="input" value="${db.settings.end}"></div><div class="field"><label>فترة السماح بالدقائق</label><input id="s_grace" type="number" class="input" value="${db.settings.grace}"></div></div><div class="actions"><button class="btn primary" onclick="saveSettings()">حفظ الإعدادات</button></div></div><div class="panel"><h3>النسخ الاحتياطي</h3><button class="btn success" onclick="backup()">⬇️ تحميل نسخة احتياطية</button> <label class="btn" style="display:inline-block">⬆️ استعادة نسخة<input type="file" hidden accept=".json" onchange="restore(event)"></label><button class="btn danger" onclick="resetDemo()">مسح كل البيانات</button><p class="muted">قبل الربط بقاعدة بيانات مشتركة، استخدم النسخ الاحتياطي كإجراء أمان.</p></div></div><div class="panel"><h3>إدارة الفروع</h3><div class="toolbar"><input id="newBranch" class="input" placeholder="اسم الفرع الجديد"><button class="btn primary" onclick="addBranch()">+ إضافة فرع</button></div><div>${db.branches.map((b,i)=>`<div style="display:flex;gap:8px;align-items:center;margin:8px 0"><input id="br_${i}" class="input" value="${esc(b)}"><button class="btn primary" onclick="renameBranch(${i})">حفظ الاسم</button>${db.branches.length>1?`<button class="btn danger" onclick="deleteBranch(${i})">حذف</button>`:''}</div>`).join('')}</div></div><div class="panel"><h3>إدارة الأقسام</h3><div class="toolbar"><input id="newDept" class="input" placeholder="اسم القسم الجديد"><button class="btn primary" onclick="addDept()">+ إضافة قسم</button></div><div>${db.departments.map((d,i)=>`<div style="display:flex;gap:8px;align-items:center;margin:8px 0"><input id="dp_${i}" class="input" value="${esc(d)}"><button class="btn primary" onclick="renameDept(${i})">حفظ الاسم</button>${db.departments.length>1?`<button class="btn danger" onclick="deleteDept(${i})">حذف</button>`:''}</div>`).join('')}</div></div>`};
-function addBranch(){let n=(newBranch.value||'').trim();if(!n)return;if(db.branches.includes(n))return alert('الفرع موجود بالفعل');db.branches.push(n);save()};function renameBranch(i){let n=(document.getElementById('br_'+i).value||'').trim();if(!n)return;let old=db.branches[i];db.branches[i]=n;db.employees.forEach(e=>{if(e.branch===old)e.branch=n});save()};function deleteBranch(i){let old=db.branches[i];if(db.employees.some(e=>e.branch===old))return alert('لا يمكن حذف فرع مرتبط بموظفين. انقل الموظفين أولاً.');db.branches.splice(i,1);save()};function addDept(){let n=(newDept.value||'').trim();if(!n)return;if(db.departments.includes(n))return alert('القسم موجود بالفعل');db.departments.push(n);save()};function renameDept(i){let n=(document.getElementById('dp_'+i).value||'').trim();if(!n)return;let old=db.departments[i];db.departments[i]=n;db.employees.forEach(e=>{if(e.department===old)e.department=n});save()};function deleteDept(i){let old=db.departments[i];if(db.employees.some(e=>e.department===old))return alert('لا يمكن حذف قسم مرتبط بموظفين. انقل الموظفين أولاً.');db.departments.splice(i,1);save()}
-function saveSettings(){db.settings={start:s_start.value,end:s_end.value,grace:Number(s_grace.value||0)};save();alert('تم حفظ الإعدادات')};function backup(){download('motabe3-backup.json',JSON.stringify(db,null,2),'application/json')};function restore(ev){let f=ev.target.files[0];if(!f)return;let r=new FileReader();r.onload=()=>{try{db=JSON.parse(r.result);save();alert('تمت الاستعادة')}catch(e){alert('ملف غير صالح')}};r.readAsText(f)}async function resetDemo(){if(confirm('سيتم حذف كل البيانات الحالية محليًا ومن قاعدة البيانات. هل أنت متأكد؟')){localStorage.removeItem(KEY);if(firebaseDb){try{const snap=await firebaseDb.collection('employee_system').get();let batch=firebase.firestore().batch(),n=0;for(const d of snap.docs){batch.delete(d.ref);n++;if(n===450){await batch.commit();batch=firebase.firestore().batch();n=0}}if(n)await batch.commit()}catch(e){console.error(e)}}location.reload()}}
-function download(name,data,type){let a=document.createElement('a');a.href=URL.createObjectURL(new Blob([data],{type}));a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}function showModal(html){modalBox.innerHTML=html;modal.classList.add('show')}function closeModal(){modal.classList.remove('show')}modal.onclick=e=>{if(e.target===modal)closeModal()};
-// بيانات تجريبية اختيارية عند أول تشغيل
-if(!db.employees.length){let names=['أحمد محمد','محمد علي','محمود حسن','مصطفى السيد','عمر خالد','إسلام عادل','يوسف أحمد','حسن محمود','عبدالله سامي','محمود رجب'];names.forEach((n,i)=>db.employees.push({id:uid('e'),code:String(1001+i),name:n,phone:'01000000000',branch:'حمام التلات',department:db.departments[i%db.departments.length],job:i%2?'عامل':'موظف مبيعات',status:'نشط'}));localStorage.setItem(KEY,JSON.stringify(db))}render();cloudLoad();
-</script></body></html>
+<!-- مكتبات Firebase -->
+<script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore-compat.js"></script>
+
+<script>
+// إعدادات Firebase الخاصه بالمشروع
+const firebaseConfig = {
+  apiKey: "AIzaSyCJW0TUPiNaqoQYXpYLrBGb7BrBgARWLN0",
+  authDomain: "hamam-b6b82.firebaseapp.com",
+  projectId: "hamam-b6b82",
+  storageBucket: "hamam-b6b82.firebasestorage.app",
+  messagingSenderId: "256963018998",
+  appId: "1:256963018998:web:ee4d4db6f6f92024496cd7",
+  measurementId: "G-SZS2SJWT1W"
+};
+
+// تهيئة Firebase و Firestore
+firebase.initializeApp(firebaseConfig);
+const fsDb = firebase.firestore();
+
+const KEY='motabe3_v1';
+let db=JSON.parse(localStorage.getItem(KEY)||'null')||{settings:{start:'09:00',end:'17:00',grace:10},branches:['حمام التلات'],departments:['المبيعات','المخزن','الإدارة','الحسابات'],employees:[],attendance:[],adjustments:[],leaves:[]};
+
+// توحيد النسخ القديمة على فرع حمام التلات
+db.branches=['حمام التلات']; 
+if (db.employees) db.employees.forEach(e=>e.branch='حمام التلات');
+
+// دالة الحفظ المحدثة للحفظ محلياً وفي سحابة Firebase
+function save(){
+  localStorage.setItem(KEY,JSON.stringify(db));
+  render();
+  if (fsDb) {
+    fsDb.collection('appData').doc('main').set(db).catch(err => console.error('خطأ في حفظ البيانات سحابياً:', err));
+  }
+}
+
+// المزامنة اللحظية مع Firebase
+fsDb.collection('appData').doc('main').onSnapshot(doc => {
+  if (doc.exists) {
+    const data = doc.data();
+    if (data) {
+      db = data;
+      localStorage.setItem(KEY, JSON.stringify(db));
+      render();
+    }
+  } else {
+    // في حالة عدم وجود مستند سابق في Firebase يتم إنشاؤه بالبيانات الحالية
+    fsDb.collection('appData').doc('main').set(db);
+  }
+}, err => {
+  console.error("خطأ في الاتصال السحابي بـ Firebase:", err);
+});
+
+function uid(p){return p+Date.now()+Math.random().toString(36).slice(2,6)};
+function today(){return new Date().toISOString().slice(0,10)};
+function esc(x=''){return String(x).replace(/[&<>'"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[m]))};
+function emp(id){return db.employees.find(e=>e.id===id)};
+function money(n){return Number(n||0).toLocaleString('ar-EG',{minimumFractionDigits:0})+' ج';}
+
+function nav(page){
+  document.querySelectorAll('.page').forEach(x=>x.classList.add('hidden'));
+  document.getElementById(page).classList.remove('hidden');
+  document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===page));
+  document.getElementById('pageTitle').textContent={dashboard:'لوحة التحكم',employees:'الموظفون',attendance:'الحضور والانصراف',adjustments:'الخصومات والإضافات',leaves:'الإجازات والأذونات',reports:'التقارير',settings:'الإعدادات والنسخ'}[page]||'';
+}
+document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>nav(b.dataset.page));
+
+function render(){
+  renderDash();
+  renderEmployees();
+  renderAttendance();
+  renderAdjustments();
+  renderLeaves();
+  renderReports();
+  renderSettings();
+}
+
+function renderDash(){
+  let d=today(), total=db.employees.filter(e=>e.status!=='غير نشط').length,a=db.attendance.filter(x=>x.date===d),present=a.filter(x=>x.status==='حاضر').length,late=a.filter(x=>x.status==='متأخر').length,abs=Math.max(0,total-a.length),ded=db.adjustments.filter(x=>x.type==='خصم'&&x.date.startsWith(d.slice(0,7))).reduce((s,x)=>s+Number(x.amount),0);
+  document.getElementById('dashboard').innerHTML=`<div class="cards"><div class="card">👥 إجمالي الموظفين<div class="n">${total}</div></div><div class="card">🟢 حاضر اليوم<div class="n">${present}</div></div><div class="card">🟡 متأخر اليوم<div class="n">${late}</div></div><div class="card">🔴 غياب اليوم<div class="n">${abs}</div></div><div class="card">💸 خصومات الشهر<div class="n">${money(ded)}</div></div></div><div class="grid2"><div class="panel"><h3>حالة الفروع اليوم</h3>${db.branches.map(b=>{let es=db.employees.filter(e=>e.branch===b&&e.status!=='غير نشط'),ids=es.map(e=>e.id),aa=a.filter(x=>ids.includes(x.employeeId));return `<div class="kpi"><span>${esc(b)}</span><strong>${aa.filter(x=>x.status!=='غائب').length} / ${es.length}</strong></div>`}).join('')}</div><div class="panel"><h3>آخر التنبيهات</h3>${a.filter(x=>x.status==='متأخر'||x.status==='غائب').slice(-8).reverse().map(x=>`<div class="kpi"><span>${esc(emp(x.employeeId)?.name||'—')}</span><span class="badge ${x.status==='متأخر'?'late':'absent'}">${x.status}</span></div>`).join('')||'<div class="empty">لا توجد تنبيهات اليوم</div>'}</div></div>`;
+}
+
+function renderEmployees(){
+  let q=document.getElementById('empSearch')?.value||'',br=document.getElementById('empBranch')?.value||'',list=db.employees.filter(e=>(!q||[e.name,e.code,e.phone].join(' ').includes(q))&&(!br||e.branch===br));
+  document.getElementById('employees').innerHTML=`<div class="panel"><div class="toolbar"><input id="empSearch" class="input" placeholder="بحث بالاسم أو الكود أو الهاتف" value="${esc(q)}" oninput="renderEmployees()"><select id="empBranch" onchange="renderEmployees()"><option value="">كل الفروع</option>${db.branches.map(x=>`<option ${br===x?'selected':''}>${esc(x)}</option>`).join('')}</select><button class="btn primary" onclick="employeeModal()">+ إضافة موظف</button></div><div class="tablewrap"><table><thead><tr><th>الكود</th><th>الموظف</th><th>الفرع</th><th>القسم</th><th>الوظيفة</th><th>الحالة</th><th>إجراء</th></tr></thead><tbody>${list.map(e=>`<tr><td>${esc(e.code)}</td><td><b>${esc(e.name)}</b><br><span class="muted">${esc(e.phone)}</span></td><td>${esc(e.branch)}</td><td>${esc(e.department)}</td><td>${esc(e.job)}</td><td>${esc(e.status)}</td><td><button class="btn" onclick="employeeModal('${e.id}')">تعديل</button> <button class="btn danger" onclick="delEmp('${e.id}')">حذف</button></td></tr>`).join('')||'<tr><td colspan="7" class="empty">لا يوجد موظفون</td></tr>'}</tbody></table></div></div>`;
+}
+
+function employeeModal(id){
+  let e=id?emp(id):{code:'',name:'',phone:'',branch:db.branches[0],department:db.departments[0],job:'',status:'نشط'};
+  showModal(`<h3>${id?'تعديل موظف':'إضافة موظف'}</h3><div class="formgrid"><div class="field"><label>كود الموظف</label><input id="f_code" class="input" value="${esc(e.code)}"></div><div class="field"><label>الاسم</label><input id="f_name" class="input" value="${esc(e.name)}"></div><div class="field"><label>الهاتف</label><input id="f_phone" class="input" value="${esc(e.phone)}"></div><div class="field"><label>الفرع</label><select id="f_branch">${db.branches.map(x=>`<option ${e.branch===x?'selected':''}>${esc(x)}</option>`).join('')}</select></div><div class="field"><label>القسم</label><select id="f_department">${db.departments.map(x=>`<option ${e.department===x?'selected':''}>${esc(x)}</option>`).join('')}</select></div><div class="field"><label>الوظيفة</label><input id="f_job" class="input" value="${esc(e.job)}"></div><div class="field"><label>الحالة</label><select id="f_status"><option ${e.status==='نشط'?'selected':''}>نشط</option><option ${e.status==='غير نشط'?'selected':''}>غير نشط</option></select></div></div><div class="actions"><button class="btn primary" onclick="saveEmp('${id||''}')">حفظ</button><button class="btn" onclick="closeModal()">إلغاء</button></div>`);
+}
+
+function saveEmp(id){
+  let data={id:id||uid('e'),code:f_code.value.trim(),name:f_name.value.trim(),phone:f_phone.value.trim(),branch:f_branch.value,department:f_department.value,job:f_job.value.trim(),status:f_status.value};
+  if(!data.name)return alert('اكتب اسم الموظف');
+  if(id)db.employees[db.employees.findIndex(e=>e.id===id)]=data;
+  else db.employees.push(data);
+  closeModal();
+  save();
+}
+
+function delEmp(id){
+  if(confirm('حذف الموظف؟')){
+    db.employees=db.employees.filter(e=>e.id!==id);
+    save();
+  }
+}
+
+function renderAttendance(){
+  let d=document.getElementById('attDate')?.value||today(),br=document.getElementById('attBranch')?.value||'',q=document.getElementById('attSearch')?.value||'',rows=db.employees.filter(e=>(!br||e.branch===br)&&(!q||e.name.includes(q)||e.code.includes(q)));
+  document.getElementById('attendance').innerHTML=`<div class="panel"><div class="toolbar"><input id="attDate" type="date" class="input" value="${d}" onchange="renderAttendance()"><select id="attBranch" onchange="renderAttendance()"><option value="">كل الفروع</option>${db.branches.map(x=>`<option ${br===x?'selected':''}>${esc(x)}</option>`).join('')}</select><input id="attSearch" class="input" placeholder="بحث موظف" value="${esc(q)}" oninput="renderAttendance()"><button class="btn success" onclick="markAll('${d}')">تسجيل الكل حاضر</button><button class="btn" onclick="attendanceCSV('${d}')">تصدير CSV</button></div><div class="tablewrap"><table><thead><tr><th>الكود</th><th>الموظف</th><th>الفرع</th><th>الحضور</th><th>الانصراف</th><th>الحالة</th><th>ملاحظات</th></tr></thead><tbody>${rows.map(e=>{let x=db.attendance.find(a=>a.employeeId===e.id&&a.date===d)||{};return `<tr><td>${esc(e.code)}</td><td>${esc(e.name)}</td><td>${esc(e.branch)}</td><td><input type="time" class="input" value="${x.in||''}" onchange="attSave('${e.id}','${d}','in',this.value)"></td><td><input type="time" class="input" value="${x.out||''}" onchange="attSave('${e.id}','${d}','out',this.value)"></td><td><select onchange="attSave('${e.id}','${d}','status',this.value)"><option ${x.status==='حاضر'?'selected':''}>حاضر</option><option ${x.status==='متأخر'?'selected':''}>متأخر</option><option ${x.status==='غائب'?'selected':''}>غائب</option><option ${x.status==='إجازة'?'selected':''}>إجازة</option></select></td><td><input class="input" value="${esc(x.note||'')}" onchange="attSave('${e.id}','${d}','note',this.value)"></td></tr>`}).join('')||'<tr><td colspan="7" class="empty">لا يوجد موظفون</td></tr>'}</tbody></table></div></div>`;
+}
+
+function attSave(id,date,k,v){
+  let x=db.attendance.find(a=>a.employeeId===id&&a.date===date);
+  if(!x){
+    x={employeeId:id,date,status:'حاضر',in:'',out:'',note:''};
+    db.attendance.push(x);
+  }
+  x[k]=v;
+  if(k==='in'&&v){
+    x.status=v>db.settings.start&&minutes(v)>minutes(db.settings.start)+Number(db.settings.grace)?'متأخر':'حاضر';
+  }
+  save();
+}
+
+function minutes(s){let [h,m]=s.split(':').map(Number);return h*60+m};
+
+function markAll(d){
+  db.employees.forEach(e=>{
+    let x=db.attendance.find(a=>a.employeeId===e.id&&a.date===d);
+    if(!x){
+      db.attendance.push({employeeId:e.id,date:d,status:'حاضر',in:db.settings.start,out:'',note:''});
+    }
+  });
+  save();
+}
+
+function quickAttendance(){nav('attendance')}
+
+function renderAdjustments(){
+  document.getElementById('adjustments').innerHTML=`<div class="panel"><div class="toolbar"><button class="btn primary" onclick="adjustModal()">+ إضافة خصم / إضافة</button></div><div class="tablewrap"><table><thead><tr><th>التاريخ</th><th>الموظف</th><th>النوع</th><th>المبلغ</th><th>السبب</th><th>إجراء</th></tr></thead><tbody>${db.adjustments.slice().reverse().map(x=>`<tr><td>${x.date}</td><td>${esc(emp(x.employeeId)?.name||'—')}</td><td><span class="badge ${x.type==='خصم'?'absent':'present'}">${x.type}</span></td><td>${money(x.amount)}</td><td>${esc(x.reason)}</td><td><button class="btn danger" onclick="delAdjustment('${x.id}')">حذف</button></td></tr>`).join('')||'<tr><td colspan="6" class="empty">لا توجد بيانات</td></tr>'}</tbody></table></div></div>`;
+}
+
+function adjustModal(){
+  showModal(`<h3>إضافة حركة مالية</h3><div class="formgrid"><div class="field"><label>الموظف</label><select id="a_emp">${db.employees.map(e=>`<option value="${e.id}">${esc(e.name)}</option>`).join('')}</select></div><div class="field"><label>النوع</label><select id="a_type"><option>خصم</option><option>إضافة</option></select></div><div class="field"><label>المبلغ</label><input id="a_amount" type="number" class="input"></div><div class="field"><label>التاريخ</label><input id="a_date" type="date" class="input" value="${today()}"></div><div class="field full"><label>السبب</label><textarea id="a_reason" class="input"></textarea></div></div><div class="actions"><button class="btn primary" onclick="saveAdjustment()">حفظ</button><button class="btn" onclick="closeModal()">إلغاء</button></div>`);
+}
+
+function saveAdjustment(){
+  db.adjustments.push({id:uid('a'),employeeId:a_emp.value,type:a_type.value,amount:Number(a_amount.value||0),date:a_date.value,reason:a_reason.value});
+  closeModal();
+  save();
+}
+
+function delAdjustment(id){
+  db.adjustments=db.adjustments.filter(x=>x.id!==id);
+  save();
+}
+
+function renderLeaves(){
+  document.getElementById('leaves').innerHTML=`<div class="panel"><div class="toolbar"><button class="btn primary" onclick="leaveModal()">+ تسجيل إجازة / إذن</button></div><div class="tablewrap"><table><thead><tr><th>الموظف</th><th>النوع</th><th>من</th><th>إلى</th><th>الحالة</th><th>السبب</th><th>إجراء</th></tr></thead><tbody>${db.leaves.slice().reverse().map(x=>`<tr><td>${esc(emp(x.employeeId)?.name\vert{}\vert{}'—')}</td><td>${esc(x.type)}</td><td>${x.from}</td><td>${x.to}</td><td>${esc(x.status)}</td><td>${esc(x.reason)}</td><td><button class="btn danger" onclick="delLeave('${x.id}')">حذف</button></td></tr>`).join('')||'<tr><td colspan="7" class="empty">لا توجد بيانات</td></tr>'}</tbody></table></div></div>`;
+}
+
+function leaveModal(){
+  showModal(`<h3>إضافة إجازة / إذن</h3><div class="formgrid"><div class="field"><label>الموظف</label><select id="l_emp">${db.employees.map(e=>`<option value="${e.id}">${esc(e.name)}</option>`).join('')}</select></div><div class="field"><label>النوع</label><select id="l_type"><option>إجازة سنوية</option><option>إجازة مرضية</option><option>إذن</option><option>غياب بعذر</option></select></div><div class="field"><label>من</label><input id="l_from" type="date" class="input" value="${today()}"></div><div class="field"><label>إلى</label><input id="l_to" type="date" class="input" value="${today()}"></div><div class="field"><label>الحالة</label><select id="l_status"><option>مقبول</option><option>معلق</option><option>مرفوض</option></select></div><div class="field full"><label>السبب</label><textarea id="l_reason" class="input"></textarea></div></div><div class="actions"><button class="btn primary" onclick="saveLeave()">حفظ</button><button class="btn" onclick="closeModal()">إلغاء</button></div>`);
+}
+
+function saveLeave(){
+  db.leaves.push({id:uid('l'),employeeId:l_emp.value,type:l_type.value,from:l_from.value,to:l_to.value,status:l_status.value,reason:l_reason.value});
+  closeModal();
+  save();
+}
+
+function delLeave(id){
+  db.leaves=db.leaves.filter(x=>x.id!==id);
+  save();
+}
+
+function renderReports(){
+  document.getElementById('reports').innerHTML=`<div class="panel"><h3>مركز التقارير</h3><div class="toolbar periods"><button class="btn active" onclick="setPeriod('today',this)">اليوم</button><button class="btn" onclick="setPeriod('week',this)">هذا الأسبوع</button><button class="btn" onclick="setPeriod('month',this)">هذا الشهر</button><button class="btn" onclick="setPeriod('custom',this)">فترة مخصصة</button></div><div class="toolbar"><select id="r_type" onchange="reportBuild()"><option value="summary">ملخص كل الموظفين</option><option value="employee">تقرير موظف</option><option value="attendance">الحضور والانصراف</option><option value="late">التأخير</option><option value="money">الخصومات والإضافات</option></select><select id="r_emp" onchange="reportBuild()"><option value="">كل الموظفين</option>${db.employees.map(e=>`<option value="${e.id}">${esc(e.name)}</option>`).join('')}</select><input id="r_from" type="date" class="input" value="${today()}" onchange="reportBuild()"><input id="r_to" type="date" class="input" value="${today()}" onchange="reportBuild()"><button class="btn primary" onclick="printReport()">🖨️ طباعة / PDF</button><button class="btn" onclick="reportCSV()">⬇️ Excel / CSV</button><button class="btn success" onclick="shareReportWhatsApp()">💬 إرسال واتساب</button></div><div id="reportOut"></div></div>`;
+  setPeriod('month',document.querySelector('.periods .btn:nth-child(3)'));
+}
+
+function periodDates(kind){
+  let d=new Date(),f=new Date(d),t=new Date(d);
+  if(kind==='week'){let day=d.getDay()||7;f.setDate(d.getDate()-day+1)}
+  else if(kind==='month'){f=new Date(d.getFullYear(),d.getMonth(),1)}
+  return {f:f.toISOString().slice(0,10),t:t.toISOString().slice(0,10)};
+}
+
+function setPeriod(kind,btn){
+  document.querySelectorAll('.periods .btn').forEach(x=>x.classList.remove('active'));
+  if(btn)btn.classList.add('active');
+  let p=periodDates(kind);
+  r_from.value=p.f;
+  r_to.value=p.t;
+  let custom=kind==='custom';
+  r_from.disabled=!custom;
+  r_to.disabled=!custom;
+  reportBuild();
+}
+
+function range(){return {f:r_from.value,t:r_to.value}};
+function inRange(d,f,t){return d>=f&&d<=t};
+
+function statsFor(ids,f,t){
+  let aa=db.attendance.filter(x=>ids.includes(x.employeeId)&&inRange(x.date,f,t)),mm=db.adjustments.filter(x=>ids.includes(x.employeeId)&&inRange(x.date,f,t));
+  return {
+    present:aa.filter(x=>x.status==='حاضر'||x.status==='متأخر').length,
+    late:aa.filter(x=>x.status==='متأخر').length,
+    absent:aa.filter(x=>x.status==='غائب').length,
+    ded:Math.round(mm.filter(x=>x.type==='خصم').reduce((s,x)=>s+Number(x.amount||0),0)),
+    add:Math.round(mm.filter(x=>x.type==='إضافة').reduce((s,x)=>s+Number(x.amount||0),0))
+  };
+}
+
+function reportBuild(){
+  let type=r_type.value,{f,t}=range(),out='';
+  if(!f||!t||f>t){document.getElementById('reportOut').innerHTML='<div class="empty">اختر فترة صحيحة</div>';return}
+  if(type==='summary'){
+    let ids=db.employees.map(e=>e.id),st=statsFor(ids,f,t);
+    out=`<div class="summary-grid"><div class="summary-card">أيام الحضور<b>${st.present}</b></div><div class="summary-card">أيام التأخير<b>${st.late}</b></div><div class="summary-card">أيام الغياب<b>${st.absent}</b></div><div class="summary-card">إجمالي الخصومات<b>${money(st.ded)}</b></div></div><div class="reportbox"><h3>ملخص الموظفين من ${f} إلى ${t}</h3>${reportTable(['الموظف','الحضور','التأخير','الغياب','الخصومات','الإضافات'],db.employees.map(e=>{let x=statsFor([e.id],f,t);return [e.name,x.present,x.late,x.absent,money(x.ded),money(x.add)]}))}</div>`;
+  }else if(type==='employee'){
+    let e=emp(r_emp.value);
+    if(!e){out='<div class="empty">اختر موظفًا لعرض التقرير</div>'}
+    else{
+      let st=statsFor([e.id],f,t),aa=db.attendance.filter(x=>x.employeeId===e.id&&inRange(x.date,f,t)),ll=db.leaves.filter(x=>x.employeeId===e.id&&x.from<=t&&x.to>=f);
+      out=`<div class="reportbox"><h3>${esc(e.name)} — ${esc(e.branch)}</h3><div class="summary-grid"><div class="summary-card">الحضور<b>${st.present}</b></div><div class="summary-card">التأخير<b>${st.late}</b></div><div class="summary-card">الغياب<b>${st.absent}</b></div><div class="summary-card">الخصومات<b>${money(st.ded)}</b></div></div>${reportTable(['التاريخ','الحضور','الانصراف','الحالة','ملاحظات'],aa.map(x=>[x.date,x.in,x.out,x.status,x.note||'']))}${ll.length?reportTable(['نوع الإجازة','من','إلى','الحالة'],ll.map(x=>[x.type,x.from,x.to,x.status])):''}</div>`;
+    }
+  }else if(type==='attendance'||type==='late'){
+    let aa=db.attendance.filter(x=>inRange(x.date,f,t)&&(type==='attendance'||x.status==='متأخر'));
+    if(r_emp.value)aa=aa.filter(x=>x.employeeId===r_emp.value);
+    out=reportTable(['التاريخ','الموظف','الحضور','الانصراف','الحالة','ملاحظات'],aa.map(x=>[x.date,emp(x.employeeId)?.name||'',x.in,x.out,x.status,x.note||'']));
+  }else{
+    let mm=db.adjustments.filter(x=>inRange(x.date,f,t));
+    if(r_emp.value)mm=mm.filter(x=>x.employeeId===r_emp.value);
+    out=reportTable(['التاريخ','الموظف','النوع','المبلغ','السبب'],mm.map(x=>[x.date,emp(x.employeeId)?.name||'',x.type,money(x.amount),x.reason]));
+  }
+  document.getElementById('reportOut').innerHTML=out;
+}
+
+function reportTable(headers,rows){
+  return `<div class="tablewrap"><table><thead><tr>${headers.map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>${rows.map(r=>`<tr>${r.map(c=>`<td>${esc(c)}</td>`).join('')}</tr>`).join('')||`<tr><td colspan="${headers.length}" class="empty">لا توجد نتائج</td></tr>`}</tbody></table></div>`;
+}
+
+function shareReportWhatsApp(){
+  let {f,t}=range(),ids=r_emp.value?[r_emp.value]:db.employees.map(e=>e.id),st=statsFor(ids,f,t),name=r_emp.value?(emp(r_emp.value)?.name||'الموظف'):'كل الموظفين';
+  let msg=`تقرير حمام التلات للموظفين\nالفترة: ${f} إلى ${t}\nالموظف: ${name}\n\nالحضور: ${st.present}\nالتأخير: ${st.late}\nالغياب: ${st.absent}\nالخصومات: ${money(st.ded)}\nالإضافات: ${money(st.add)}\n\nتم استخراج التقرير من نظام حمام التلات.`;
+  window.open('https://wa.me/?text='+encodeURIComponent(msg),'_blank');
+}
+
+function printReport(){window.print()};
+
+function reportCSV(){
+  let table=document.querySelector('#reportOut table');
+  if(!table)return;
+  let rows=[...table.rows].map(r=>[...r.cells].map(c=>`"${c.innerText.replace(/"/g,'""')}"`).join(','));
+  download('report.csv','\ufeff'+rows.join('\n'),'text/csv;charset=utf-8');
+}
+
+function attendanceCSV(d){
+  let rows=[['الكود','الموظف','الفرع','التاريخ','الحضور','الانصراف','الحالة','ملاحظات']];
+  db.attendance.filter(x=>x.date===d).forEach(x=>{let e=emp(x.employeeId);rows.push([e?.code,e?.name,e?.branch,d,x.in,x.out,x.status,x.note])});
+  download('attendance.csv','\ufeff'+rows.map(r=>r.map(c=>`"${String(c||'').replace(/"/g,'""')}"`).join(',')).join('\n'),'text/csv;charset=utf-8');
+}
+
+function renderSettings(){
+  document.getElementById('settings').innerHTML=`<div class="grid2"><div class="panel"><h3>إعدادات الدوام</h3><div class="formgrid"><div class="field"><label>بداية العمل</label><input id="s_start" type="time" class="input" value="${db.settings.start}"></div><div class="field"><label>نهاية العمل</label><input id="s_end" type="time" class="input" value="${db.settings.end}"></div><div class="field"><label>فترة السماح بالدقائق</label><input id="s_grace" type="number" class="input" value="${db.settings.grace}"></div></div><div class="actions"><button class="btn primary" onclick="saveSettings()">حفظ الإعدادات</button></div></div><div class="panel"><h3>النسخ الاحتياطي والربط</h3><button class="btn success" onclick="backup()">⬇️ تحميل نسخة احتياطية</button> <label class="btn" style="display:inline-block">⬆️ استعادة نسخة<input type="file" hidden accept=".json" onchange="restore(event)"></label><button class="btn danger" onclick="resetDemo()">مسح كل البيانات</button><p class="muted">تم ربط البيانات تلقائياً بـ Firebase، والمزمنة تعمل سحابياً فور التعديل.</p></div></div><div class="panel"><h3>إدارة الفروع</h3><div class="toolbar"><input id="newBranch" class="input" placeholder="اسم الفرع الجديد"><button class="btn primary" onclick="addBranch()">+ إضافة فرع</button></div><div>${db.branches.map((b,i)=>`<div style="display:flex;gap:8px;align-items:center;margin:8px 0"><input id="br_${i}" class="input" value="${esc(b)}"><button class="btn primary" onclick="renameBranch(${i})">حفظ الاسم</button>${db.branches.length>1?`<button class="btn danger" onclick="deleteBranch(${i})">حذف</button>`:''}</div>`).join('')}</div></div><div class="panel"><h3>إدارة الأقسام</h3><div class="toolbar"><input id="newDept" class="input" placeholder="اسم القسم الجديد"><button class="btn primary" onclick="addDept()">+ إضافة قسم</button></div><div>${db.departments.map((d,i)=>`<div style="display:flex;gap:8px;align-items:center;margin:8px 0"><input id="dp_${i}" class="input" value="${esc(d)}"><button class="btn primary" onclick="renameDept(${i})">حفظ الاسم</button>${db.departments.length>1?`<button class="btn danger" onclick="deleteDept(${i})">حذف</button>`:''}</div>`).join('')}</div></div>`;
+}
+
+function addBranch(){
+  let n=(newBranch.value||'').trim();
+  if(!n)return;
+  if(db.branches.includes(n))return alert('الفرع موجود بالفعل');
+  db.branches.push(n);
+  save();
+}
+
+function renameBranch(i){
+  let n=(document.getElementById('br_'+i).value||'').trim();
+  if(!n)return;
+  let old=db.branches[i];
+  db.branches[i]=n;
+  db.employees.forEach(e=>{if(e.branch===old)e.branch=n});
+  save();
+}
+
+function deleteBranch(i){
+  let old=db.branches[i];
+  if(db.employees.some(e=>e.branch===old))return alert('لا يمكن حذف فرع مرتبط بموظفين. انقل الموظفين أولاً.');
+  db.branches.splice(i,1);
+  save();
+}
+
+function addDept(){
+  let n=(newDept.value||'').trim();
+  if(!n)return;
+  if(db.departments.includes(n))return alert('القسم موجود بالفعل');
+  db.departments.push(n);
+  save();
+}
+
+function renameDept(i){
+  let n=(document.getElementById('dp_'+i).value||'').trim();
+  if(!n)return;
+  let old=db.departments[i];
+  db.departments[i]=n;
+  db.employees.forEach(e=>{if(e.department===old)e.department=n});
+  save();
+}
+
+function deleteDept(i){
+  let old=db.departments[i];
+  if(db.employees.some(e=>e.department===old))return alert('لا يمكن حذف قسم مرتبط بموظفين. انقل الموظفين أولاً.');
+  db.departments.splice(i,1);
+  save();
+}
+
+function saveSettings(){
+  db.settings={start:s_start.value,end:s_end.value,grace:Number(s_grace.value||0)};
+  save();
+  alert('تم حفظ الإعدادات');
+}
+
+function backup(){
+  download('motabe3-backup.json',JSON.stringify(db,null,2),'application/json');
+}
+
+function restore(ev){
+  let f=ev.target.files[0];
+  if(!f)return;
+  let r=new FileReader();
+  r.onload=()=>{
+    try{
+      db=JSON.parse(r.result);
+      save();
+      alert('تمت الاستعادة بنجاح');
+    }catch(e){
+      alert('ملف غير صالح');
+    }
+  };
+  r.readAsText(f);
+}
+
+function resetDemo(){
+  if(confirm('سيتم حذف كل البيانات الحالية. هل أنت متأكد؟')){
+    localStorage.removeItem(KEY);
+    db={settings:{start:'09:00',end:'17:00',grace:10},branches:['حمام التلات'],departments:['المبيعات','المخزن','الإدارة','الحسابات'],employees:[],attendance:[],adjustments:[],leaves:[]};
+    save();
+    location.reload();
+  }
+}
+
+function download(name,data,type){
+  let a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob([data],{type}));
+  a.download=name;
+  a.click();
+  setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+}
+
+function showModal(html){
+  modalBox.innerHTML=html;
+  modal.classList.add('show');
+}
+
+function closeModal(){
+  modal.classList.remove('show');
+}
+modal.onclick=e=>{if(e.target===modal)closeModal()};
+
+// بيانات تجريبية عند أول تشغيل
+if(!db.employees.length){
+  let names=['أحمد محمد','محمد علي','محمود حسن','مصطفى السيد','عمر خالد','إسلام عادل','يوسف أحمد','حسن محمود','عبدالله سامي','محمود رجب'];
+  names.forEach((n,i)=>db.employees.push({id:uid('e'),code:String(1001+i),name:n,phone:'01000000000',branch:db.branches[i%db.branches.length],department:db.departments[i%db.departments.length],job:i%2?'عامل':'موظف مبيعات',status:'نشط'}));
+  save();
+} else {
+  render();
+}
+</script>
+</body>
+</html>
