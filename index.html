@@ -30,15 +30,14 @@ function saveSettings(){db.settings={start:s_start.value,end:s_end.value,grace:N
 function download(name,data,type){let a=document.createElement('a');a.href=URL.createObjectURL(new Blob([data],{type}));a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}function showModal(html){modalBox.innerHTML=html;modal.classList.add('show')}function closeModal(){modal.classList.remove('show')}modal.onclick=e=>{if(e.target===modal)closeModal()};
 // بيانات تجريبية اختيارية عند أول تشغيل
 if(!db.employees.length){let names=['أحمد محمد','محمد علي','محمود حسن','مصطفى السيد','عمر خالد','إسلام عادل','يوسف أحمد','حسن محمود','عبدالله سامي','محمود رجب'];names.forEach((n,i)=>db.employees.push({id:uid('e'),code:String(1001+i),name:n,phone:'01000000000',branch:db.branches[i%db.branches.length],department:db.departments[i%db.departments.length],job:i%2?'عامل':'موظف مبيعات',status:'نشط'}));save()}else render();
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyCJW0TUPiNaqoQYXpYLrBGb7BrBgARWLN0",
-  authDomain: "hamam-b6b82.firebaseapp.com",
-  projectId: "hamam-b6b82",
-  storageBucket: "hamam-b6b82.firebasestorage.app",
-  messagingSenderId: "256963018998",
-  appId: "1:256963018998:web:ee4d4db6f6f92024496cd7",
-  measurementId: "G-SZS2SJWT1W"
+  apiKey: "AIzaSyBMhHcQUj6NJnVoO6wmCptSblsAAkqe5Xc",
+  authDomain: "hamameltalat-8c225.firebaseapp.com",
+  projectId: "hamameltalat-8c225",
+  storageBucket: "hamameltalat-8c225.firebasestorage.app",
+  messagingSenderId: "477789420584",
+  appId: "1:477789420584:web:8f7dfcee9372ebcb29091d",
+  measurementId: "G-XM1SD3PTEP"
 };
 </script>
 </script></body></html>
