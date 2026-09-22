@@ -263,7 +263,7 @@ function delAdjustment(id){
 }
 
 function renderLeaves(){
-  document.getElementById('leaves').innerHTML=`<div class="panel"><div class="toolbar"><button class="btn primary" onclick="leaveModal()">+ تسجيل إجازة / إذن</button></div><div class="tablewrap"><table><thead><tr><th>الموظف</th><th>النوع</th><th>من</th><th>إلى</th><th>الحالة</th><th>السبب</th><th>إجراء</th></tr></thead><tbody>${db.leaves.slice().reverse().map(x=>`<tr><td>${esc(emp(x.employeeId)?.name\vert{}\vert{}'—')}</td><td>${esc(x.type)}</td><td>${x.from}</td><td>${x.to}</td><td>${esc(x.status)}</td><td>${esc(x.reason)}</td><td><button class="btn danger" onclick="delLeave('${x.id}')">حذف</button></td></tr>`).join('')||'<tr><td colspan="7" class="empty">لا توجد بيانات</td></tr>'}</tbody></table></div></div>`;
+  document.getElementById('leaves').innerHTML=`<div class="panel"><div class="toolbar"><button class="btn primary" onclick="leaveModal()">+ تسجيل إجازة / إذن</button></div><div class="tablewrap"><table><thead><tr><th>الموظف</th><th>النوع</th><th>من</th><th>إلى</th><th>الحالة</th><th>السبب</th><th>إجراء</th></tr></thead><tbody>${db.leaves.slice().reverse().map(x=>`<tr><td>${esc(emp(x.employeeId)?.name||'—')}</td><td>${esc(x.type)}</td><td>${x.from}</td><td>${x.to}</td><td>${esc(x.status)}</td><td>${esc(x.reason)}</td><td><button class="btn danger" onclick="delLeave('${x.id}')">حذف</button></td></tr>`).join('')||'<tr><td colspan="7" class="empty">لا توجد بيانات</td></tr>'}</tbody></table></div></div>`;
 }
 
 function leaveModal(){
